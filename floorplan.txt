@@ -1,0 +1,4 @@
+# if_start_slice, if_end_slice, kernel_end_slice, kernel_height, num_kernels
+11 13 16 30 30
+24 27 30 30 30
+46 49 52 30 30
