@@ -1,10 +1,11 @@
-set idx [lindex $argv 0]
-open_checkpoint if_kernel${idx}.dcp
+set name [lindex $argv 0]
+set idx [lindex $argv 1]
+open_checkpoint if_${name}${idx}.dcp
 lock_design -level routing
 source lock_if_pins.tcl
 
 create_pblock pblock_kernel
-set range_file [open "if_kernel${idx}.pblock" r]
+set range_file [open "if_${name}${idx}.pblock" r]
 set range [read -nonewline $range_file]
 close $range_file
 resize_pblock pblock_kernel -add "$range"
@@ -21,7 +22,7 @@ set_clock_uncertainty -hold 0.100 [get_clocks clk]
 place_design
 route_design
 
-set pips_file [open "kernel_clock_pips_unfiltered${idx}.txt" w]
+set pips_file [open "${name}_clock_pips_unfiltered${idx}.txt" w]
 foreach pip [get_pips -of_objects [get_nets clock0_pn]] {
   puts $pips_file $pip
 }
@@ -33,5 +34,5 @@ remove_cell clk_buf
 connect_net -net [get_nets clock0_pn] -objects [get_ports clock]
 reset_timing
 
-write_checkpoint -force if_kernel_routed${idx}.dcp
-write_edif -force if_kernel_routed${idx}.edf
+write_checkpoint -force if_${name}_routed${idx}.dcp
+write_edif -force if_${name}_routed${idx}.edf
