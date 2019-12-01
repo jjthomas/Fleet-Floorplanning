@@ -1,5 +1,5 @@
 submit_job() {
-  $1 &
+  eval $1 &
   echo $!
 }
 
