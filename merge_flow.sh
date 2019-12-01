@@ -11,8 +11,8 @@ log=merge_${1}_${timestamp}.log
 } 2>&1 | tee $log
 
 echo "Summary of Exceptions ($log):"
-grep -n Exception $log
-echo "Summary of errors:"
+grep -n "[^ ]Exception" $log
+echo "Summary of errors ($log):"
 grep -n ERROR $log
 echo "Timing issues:"
 grep "Slack (VIOLATED)" $log

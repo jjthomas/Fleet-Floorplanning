@@ -12,8 +12,8 @@ log=shell_${timestamp}.log
   ./route_if_shell.sh
 } 2>&1 | tee $log
 
-echo "Summary of Exceptions:"
-grep -n Exception $log
+echo "Summary of Exceptions ($log):"
+grep -n "[^ ]Exception" $log
 echo "Summary of errors ($log):"
 grep -n ERROR $log
 echo "Timing summary:"
