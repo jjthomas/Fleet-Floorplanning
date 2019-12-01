@@ -1,7 +1,7 @@
 open_checkpoint if_shell.dcp
 source lock_if.tcl
 
-set shell_region "SLICE_X88Y0:SLICE_X94Y599 DSP48E2_X11Y0:DSP48E2_X11Y239"
+set shell_region "SLICE_X88Y0:SLICE_X94Y599 DSP48E2_X11Y0:DSP48E2_X11Y239 LAGUNA_X12Y120:LAGUNA_X13Y359"
 
 create_pblock pblock_CL_hole
 resize_pblock pblock_CL_hole -add {CLOCKREGION_X0Y10:CLOCKREGION_X5Y14 CLOCKREGION_X0Y0:CLOCKREGION_X2Y9}
@@ -18,7 +18,6 @@ set_property CONTAIN_ROUTING 1 [get_pblocks pblock_CL_hole]
 create_pblock pblock_shell
 resize_pblock pblock_shell -add $shell_region
 set_property PARENT pblock_CL_hole [get_pblocks pblock_shell]
-set_property CONTAIN_ROUTING 1 [get_pblocks pblock_shell]
 add_cells_to_pblock pblock_shell [get_cells -hierarchical -filter NAME=~shell*]
 
 create_clock -period 8.000 -name clk [get_ports clock]

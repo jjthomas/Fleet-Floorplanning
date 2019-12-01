@@ -2,9 +2,6 @@
 
 # ./kernel_flow.sh <kernel verilog file> <kernel module>
 
-set -e
-export SHELLOPTS
-
 timestamp=$(date +"%y_%m_%d-%H%M%S")
 log=kernel_${2}_${timestamp}.log
 
@@ -13,7 +10,9 @@ log=kernel_${2}_${timestamp}.log
   ./route_if_kernels.sh $2
 } 2>&1 | tee $log
 
-echo "Summary of errors ($log):"
+echo "Summary of Exceptions ($log):"
+grep -n Exception $log
+echo "Summary of errors:"
 grep -n ERROR $log
 echo "Timing summary:"
 grep WNS $log | tail -n 1

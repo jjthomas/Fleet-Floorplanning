@@ -2,9 +2,6 @@
 
 # ./shell_flow.sh <shell verilog file> <shell module> <template kernel verilog file> <template kernel module>
 
-set -e
-export SHELLOPTS
-
 timestamp=$(date +"%y_%m_%d-%H%M%S")
 log=shell_${timestamp}.log
 
@@ -15,6 +12,8 @@ log=shell_${timestamp}.log
   ./route_if_shell.sh
 } 2>&1 | tee $log
 
+echo "Summary of Exceptions:"
+grep -n Exception $log
 echo "Summary of errors ($log):"
 grep -n ERROR $log
 echo "Timing summary:"
