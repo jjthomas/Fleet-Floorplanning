@@ -30,7 +30,7 @@ Then run `sbt "runMain edu.stanford.fleet.StreamingWrapperDriver"`. A file calle
 Go to Fleet-Floorplanning. Run the following commands to generate a shell with sockets for the specified number of cores and core IO interface. The socket floorplan (default for 90 cores) can be found in `floorplan.txt`. The `aws_build_dcp_from_cl_main.sh` command will take a while and should be sent to a job submission system if available. Watch for any errors in these or the below commands.
 
 ```
-./shell_flow /path/to/Fleet/StreamingWrapper.v StreamingMemoryController /path/to/Fleet/StreamingWrapper.v Summer
+./shell_flow.sh /path/to/Fleet/StreamingWrapper.v StreamingMemoryController /path/to/Fleet/StreamingWrapper.v Summer
 cd $AWS_FPGA
 source hdk_setup.sh
 cd $AWS_FPGA/hdk/cl/examples/cl_dram_dma/build/scripts
@@ -40,11 +40,13 @@ cd $AWS_FPGA/hdk/cl/examples/cl_dram_dma/build/scripts
 Now run the following command to generate core implementations for each socket column.
 
 ```
-./kernel_flow /path/to/Fleet/StreamingWrapper.v Summer
+./kernel_flow.sh /path/to/Fleet/StreamingWrapper.v Summer
 ```
 
 Finally, run the following command to insert cores into the sockets and generate a final dcp (`Summer_combined.dcp`).
 
 ```
-./merge_flow Summer
+./merge_flow.sh Summer
 ```
+
+The `kernel_flow` and `merge_flow` steps can be run again with new cores without updating the shell, as long as the core IO interface and desired number of cores remains the same.
