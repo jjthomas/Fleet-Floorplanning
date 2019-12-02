@@ -24,7 +24,7 @@ and put it at `$FLEET_RW_HOME/rapidwright.jar` (we've tested on RapidWright 2019
 
 Run `mvn package` in the Fleet-Floorplanning-RapidWright directory.
 
-Go to the Fleet repository. Install sbt. Edit `StreamingWrapperDriver` to generate a shell for the right number of cores (90 default) and core IO interface. You can also insert a core other than the default `Summer` (e.g. `Counter`). The inserted core determines the core IO interface of the shell.
+Go to the Fleet repository. Install sbt. Edit `StreamingWrapperDriver` to generate a shell for the desired number of cores (90 default) and core IO interface. You can also insert a core other than the default `Summer` (e.g. `Counter`). The inserted core determines the core IO interface of the shell.
 Then run `sbt "runMain edu.stanford.fleet.StreamingWrapperDriver"`. A file called `StreamingWrapper.v` should be produced that has both the shell RTL and core RTL.
 
 Go to Fleet-Floorplanning. Run the following commands to generate a shell with sockets for the specified number of cores and core IO interface. The socket floorplan (default for 90 cores) can be found in `floorplan.txt`. The `aws_build_dcp_from_cl_main.sh` command will take a while and should be sent to a job submission system if available. Watch for any errors in these or the below commands.
