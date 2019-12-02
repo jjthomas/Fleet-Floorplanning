@@ -1,10 +1,14 @@
 # Fleet-Floorplanning
 
 Clone the following 4 repos:
-[https://github.com/jjthomas/Fleet]
-[https://github.com/jjthomas/Fleet-Floorplanning]
-[https://github.com/jjthomas/Fleet-Floorplanning-RapidWright]
-[https://github.com/jjthomas/aws-fpga]
+
+https://github.com/jjthomas/Fleet
+
+https://github.com/jjthomas/Fleet-Floorplanning
+
+https://github.com/jjthomas/Fleet-Floorplanning-RapidWright
+
+https://github.com/jjthomas/aws-fpga
 
 Update your `~/.bashrc` or `~/.bash_profile` with the following (make sure not to include trailing slashes in directory paths):
 
@@ -15,7 +19,7 @@ AWS_FPGA=/path/to/aws-fpga
 ```
 
 Install Maven and make sure it is pointing to Java 1.8+. 
-Get the latest RapidWright standalone jar for your platform from [https://github.com/Xilinx/RapidWright/releases]
+Get the latest RapidWright standalone jar for your platform from https://github.com/Xilinx/RapidWright/releases
 and put it at `$FLEET_RW_HOME/rapidwright.jar` (we've tested on RapidWright 2019.1).
 
 Run `mvn package` in the Fleet-Floorplanning-RapidWright directory.
