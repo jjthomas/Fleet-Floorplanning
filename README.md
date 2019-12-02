@@ -37,7 +37,7 @@ cd $AWS_FPGA/hdk/cl/examples/cl_dram_dma/build/scripts
 ./aws_build_dcp_from_cl_main.sh -strategy TIMING -io_dir /path/to/Fleet-Floorplanning
 ```
 
-Now run the following command to generate core implementations for each socket column.
+Now run the following command in Fleet-Floorplanning to generate core implementations for each socket column.
 
 ```
 ./kernel_flow.sh /path/to/Fleet/StreamingWrapper.v Summer
