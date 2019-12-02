@@ -8,7 +8,7 @@ https://github.com/jjthomas/Fleet-Floorplanning
 
 https://github.com/jjthomas/Fleet-Floorplanning-RapidWright
 
-https://github.com/jjthomas/aws-fpga
+https://github.com/jjthomas/aws-fpga (checkout branch `minimal_single_ddr`)
 
 Update your `~/.bashrc` or `~/.bash_profile` with the following (make sure not to include trailing slashes in directory paths):
 
