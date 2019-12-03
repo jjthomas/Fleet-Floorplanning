@@ -21,6 +21,7 @@ set_property PARENT pblock_CL_hole [get_pblocks pblock_shell]
 add_cells_to_pblock pblock_shell [get_cells -hierarchical -filter NAME=~shell*]
 
 create_clock -period 8.000 -name clk [get_ports clock]
+set_clock_uncertainty -hold 0.100 [get_clocks clk]
 set_property HD.CLK_SRC BUFGCE_X1Y181 [get_ports clock]
 
 place_design
