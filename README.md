@@ -14,9 +14,9 @@ Update your `~/.bashrc` or `~/.bash_profile` with the following (make sure not t
 
 ```
 FLEET_RW_HOME=/path/to/Fleet-Floorplanning-RapidWright
-CLASSPATH=$CLASSPATH:$FLEET_RW_HOME/rapidwright.jar:$FLEET_RW_HOME/target/fleet-rw-1.0-SNAPSHOT.jar
-AWS_FPGA=/path/to/aws-fpga
-CL_DIR=$AWS_FPGA/hdk/cl/examples/cl_dram_dma
+export CLASSPATH=$CLASSPATH:$FLEET_RW_HOME/rapidwright.jar:$FLEET_RW_HOME/target/fleet-rw-1.0-SNAPSHOT.jar
+export AWS_FPGA=/path/to/aws-fpga
+export CL_DIR=$AWS_FPGA/hdk/cl/examples/cl_dram_dma
 ```
 
 Install Maven and make sure it is pointing to Java 1.8+. 
