@@ -10,11 +10,11 @@ log=merge_${1}_${timestamp}.log
   ./merge_cl_shell.sh $1
 } 2>&1 | tee $log
 
-echo "Summary of Exceptions ($log):"
+echo; echo "Summary of Exceptions ($log):"
 grep -n "[^ ]Exception" $log
-echo "Summary of errors ($log):"
+echo; echo "Summary of errors ($log):"
 grep -n ERROR $log
-echo "Routing status:"
+echo; echo "Routing status:"
 grep "nets with routing errors" $log
-echo "Timing issues:"
+echo; echo "Timing issues:"
 grep "Slack (VIOLATED)" $log
