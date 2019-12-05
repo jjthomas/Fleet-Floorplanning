@@ -14,6 +14,7 @@ for i in $(seq 0 $(($num_cols - 1))); do
   echo "Waiting for if_${1}${i}..."
   wait_for_job ${job_ids[$i]}
   cat if_${1}${i}.log
+  echo "TIMING SUMMARY ($i): $(grep WNS if_${1}${i}.log | tail -n 1)"
   rm if_${1}${i}.log
   ./filter_clock_pips.sh $1 $i
 done

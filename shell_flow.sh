@@ -16,5 +16,7 @@ echo; echo "Summary of Exceptions ($log):"
 grep -n "[^ ]Exception" $log
 echo; echo "Summary of errors ($log):"
 grep -n ERROR $log
+echo; echo "Summary of critical warnings ($log):"
+grep -n "CRITICAL WARNING" $log
 echo; echo "Timing summary:"
 grep WNS $log | tail -n 1

@@ -28,9 +28,9 @@ foreach pip [get_pips -of_objects [get_nets clock0_pn]] {
 }
 close $pips_file
 
-route_design -unroute -nets [get_nets clock0_pn]
+route_design -quiet -unroute -nets [get_nets clock0_pn]
 disconnect_net -net [get_nets clock0_pn] -objects [get_pins clk_buf/O]
-remove_cell clk_buf
+remove_cell -quiet clk_buf
 connect_net -net [get_nets clock0_pn] -objects [get_ports clock]
 reset_timing
 
