@@ -25,10 +25,11 @@ and put it at `$FLEET_RW_HOME/rapidwright.jar` (we've tested on RapidWright 2019
 
 Run `mvn package` in the Fleet-Floorplanning-RapidWright directory.
 
-Go to the Fleet repository. Install sbt. Edit `StreamingWrapperDriver` to generate a shell for the desired number of cores (90 default) and core IO interface. You can also insert a core other than the default `Summer` (e.g. `Counter`). The inserted core determines the core IO interface of the shell.
-Then run `sbt "runMain edu.stanford.fleet.StreamingWrapperDriver"`. A file called `StreamingWrapper.v` should be produced that has both the shell RTL and core RTL.
+Go to the Fleet repository. Install sbt. Edit `StreamingWrapperDriver` to generate a shell for the desired number of cores (180 default) and core IO interface. You can also insert a core other than the default `Summer` (e.g. `Counter`). The inserted core determines the core IO interface of the shell. Notice that `Counter` has a different IO interface than `Summer` (it consumes 8-bit rather than 32-bit input words), so the two cannot share the same shell. The smaller the core IO interface in terms of total bits, the more cores the shell can support and still successfully run through the implementation phases below without hitting routing congestion issues.
 
-Go to Fleet-Floorplanning. Make sure Vivado 2018.2 is in your `PATH`. Run the following commands to generate a shell with sockets for the specified number of cores and core IO interface. The socket floorplan (default for 90 cores) can be found in `floorplan.txt`. The `aws_build_dcp_from_cl_main.sh` command will take a while and should be sent to a job submission system if available. Watch for any errors in these or the below commands.
+Now run `sbt "runMain edu.stanford.fleet.StreamingWrapperDriver"`. A file called `StreamingWrapper.v` should be produced that has both the shell RTL and core RTL.
+
+Go to Fleet-Floorplanning. Make sure Vivado 2018.2 is in your `PATH`. Run the following commands to generate a shell with sockets for the specified number of cores and core IO interface. The socket floorplan (default for 180 cores) can be found in `floorplan.txt`. The `aws_build_dcp_from_cl_main.sh` command will take a while and should be sent to a job submission system if available. Watch for any errors in these or the below commands.
 
 ```
 ./shell_flow.sh /path/to/Fleet/StreamingWrapper.v StreamingMemoryController /path/to/Fleet/StreamingWrapper.v Summer
