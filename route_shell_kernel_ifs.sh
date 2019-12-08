@@ -7,7 +7,8 @@ java -Xmx2G edu.stanford.fleet.rw.CreateFFShellKernelIF
 num_cols=$(java -Xmx2G edu.stanford.fleet.rw.FloorplanUtils)
 job_ids=()
 for i in $(seq 0 $(($num_cols - 1))); do
-  job_ids+=($(submit_job "vivado -mode batch -source route_shell_kernel_if.tcl -tclargs $i &> shell_kernel_if${i}.log"))
+  submit_job "vivado -mode batch -source route_shell_kernel_if.tcl -tclargs $i &> shell_kernel_if${i}.log"
+  job_ids+=($job_id)
 done
 
 for i in $(seq 0 $(($num_cols - 1))); do

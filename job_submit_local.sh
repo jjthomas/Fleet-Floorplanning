@@ -1,6 +1,6 @@
 submit_job() {
   eval $1 &
-  echo $!
+  job_id=$!
 }
 
 wait_for_job() {
