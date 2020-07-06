@@ -52,3 +52,13 @@ Finally, run the following command to insert cores into the sockets and generate
 ```
 
 The `kernel_flow` and `merge_flow` steps can be run again with new cores without updating the shell, as long as the core IO interface and desired number of cores remains the same.
+
+To run the standard monolithic Vivado flow to implement `StreamingWrapper.v`, do the following:
+
+```
+cp /path/to/Fleet/StreamingWrapper.v $AWS_FPGA/hdk/cl/examples/cl_dram_dma/design/sw.sv
+cd $AWS_FPGA
+source hdk_setup.sh
+cd $AWS_FPGA/hdk/cl/examples/cl_dram_dma/build/scripts
+./aws_build_dcp_from_cl_main.sh -strategy TIMING -monolithic_flow
+```
